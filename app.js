@@ -4,11 +4,7 @@ new Vue({
         gameOn: false,
         playerHealth: 100,
         monsterHealth: 100,
-        // healthBarStyle: {
-        //     backgroundColor: 'green',
-        //     margin: 0,
-        //     color: 'white',
-        // }
+        attackHistory: [],
     },
     methods: {
         startGame: function() {
@@ -20,6 +16,9 @@ new Vue({
             
             this.playerHealth = this.playerHealth - monsterDamage;
             this.monsterHealth = this.monsterHealth - playerDamage;
+            
+            this.attackHistory.push(`Player attacks Monster for ${playerDamage} amount`)
+            this.attackHistory.push(`Monster attacks Player for ${monsterDamage} amount`)
         }
     }
 })
