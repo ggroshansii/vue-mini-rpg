@@ -37,7 +37,7 @@
             <button id="attack" @click="selectionPick">ATTACK</button>
             <button id="special-attack" @click="selectionPick">SPECIAL ATTACK</button>
             <button id="heal" @click='selectionPick'>HEAL</button>
-            <button id="give-up">GIVE UP</button>
+            <button id="give-up" @click='surrender'>GIVE UP</button>
         </div>
     </section>
     <section v-if="attackHistory.length > 0" class="row log">

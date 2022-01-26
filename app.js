@@ -33,16 +33,36 @@ new Vue({
 
       this.attackHistory.push(`Monster attacks Player for ${monsterDamage}`);
     },
+    gameOver: function() {
+        this.attackHistory.length = 0;
+        this.playerHealth = 100;
+        this.monsterHealth = 100;
+        this.gameOn = false;
+    },
+
+    surrender: function () {
+       if(confirm("GAME OVER")) {
+           this.gameOver();
+       }
+    },
   },
   computed: {},
   watch: {
     playerHealth: function () {
       if (this.playerHealth <= 0) {
+          this.playerHealth = 0;
+          if(confirm("GAME OVER")) {
+            this.gameOver();
+        }
         return alert("GAME OVER");
       }
     },
     monsterHealth: function () {
       if (this.monsterHealth <= 0) {
+          this.monsterHealth = 0;
+          if(confirm("GAME OVER")) {
+            this.gameOver();
+        }
         return alert("GAME OVER");
       }
     },
