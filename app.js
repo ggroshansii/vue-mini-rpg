@@ -41,7 +41,7 @@ new Vue({
     },
 
     surrender: function () {
-       if(confirm("GAME OVER")) {
+       if(confirm("GAME OVER. Would you like to restart?")) {
            this.gameOver();
        }
     },
@@ -51,19 +51,17 @@ new Vue({
     playerHealth: function () {
       if (this.playerHealth <= 0) {
           this.playerHealth = 0;
-          if(confirm("GAME OVER")) {
+          if(confirm("GAME OVER. Would you like to restart?")) {
             this.gameOver();
         }
-        return alert("GAME OVER");
       }
     },
     monsterHealth: function () {
       if (this.monsterHealth <= 0) {
           this.monsterHealth = 0;
-          if(confirm("GAME OVER")) {
+          if(confirm("GAME OVER. Would you like to restart?")) {
             this.gameOver();
         }
-        return alert("GAME OVER");
       }
     },
   },
