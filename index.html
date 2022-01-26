@@ -13,7 +13,7 @@
         <div class="small-6 columns">
             <h1 class="text-center">YOU</h1>
             <div class="healthbar">
-                <div class="healthbar text-center" :style="{backgroundColor: 'green', margin: 0, color: 'white', width: monsterHealth + '%'}">
+                <div class="healthbar text-center" :style="{backgroundColor: 'green', margin: 0, color: 'white', width: playerHealth + '%'}">
                     {{playerHealth}}
                 </div>
             </div>
@@ -21,7 +21,7 @@
         <div class="small-6 columns">
             <h1 class="text-center">MONSTER</h1>
             <div class="healthbar">
-                <div class="healthbar text-center"  :style="{backgroundColor: 'green', margin: 0, color: 'white', width: playerHealth + '%'}">
+                <div class="healthbar text-center"  :style="{backgroundColor: 'green', margin: 0, color: 'white', width: monsterHealth + '%'}">
                     {{monsterHealth}}
                 </div>
             </div>
@@ -35,7 +35,7 @@
     <section v-if="gameOn" class="row controls">
         <div class="small-12 columns">
             <button id="attack" @click="attack">ATTACK</button>
-            <button id="special-attack">SPECIAL ATTACK</button>
+            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
             <button id="heal">HEAL</button>
             <button id="give-up">GIVE UP</button>
         </div>
@@ -43,9 +43,10 @@
     <section v-if="attackHistory.length > 0" class="row log">
         <div class="small-12 columns">
             <ul>
-                <li v-for="attack in attackHistory">
-                    {{attack}}
-                </li>
+                <template v-for="attack in attackHistory">
+                    <li v-if="attack.split(' ')[0] == 'Player'" :style="{backgroundColor: 'DodgerBlue', color: 'white'}">{{attack}}</li>
+                    <li v-else :style="{backgroundColor: 'FireBrick', color: 'white'}">{{attack}}</li>
+                </template>
             </ul>
         </div>
     </section>
